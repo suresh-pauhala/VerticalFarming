@@ -90,7 +90,7 @@ def validate_register():
     if mat:
         verify = Users.query.filter_by(email=email).first()
         if verify:
-            flash('User already  exist')
+            flash('User already exist')
             return redirect('/register')
         else:
             user = Users(email=email, password=password, crop=crop)
@@ -111,4 +111,4 @@ def logout():
 if __name__ == '__main__':
     app.run(debug=True)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
