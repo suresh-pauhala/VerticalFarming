@@ -1,0 +1,37 @@
+body{
+  margin:0px;
+}
+.container_design{
+    border:0.02px solid #ebe5e4;
+    border-radius:5px;
+    width:26%;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: #ebe5e4;
+}
+a.button {
+    display:inline;
+    margin:8px;
+    border:1.5px solid black;
+    border-radius : 2px;
+    appearance: button;
+    text-decoration: none;
+    color: white;
+    width:80px;
+    height:22px;
+    text-align:center;
+    background-color:DodgerBlue;
+}
+.imgstyle{
+  position: relative;
+  top:-20px;
+  width:100%;
+}
+.btn-position{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width:15%
+ }
