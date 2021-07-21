@@ -35,3 +35,26 @@ a.button {
   right: 30px;
   width:15%
  }
+ table {
+  width:50%;
+  margin-left:20%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: #1994e6;
+  color: white;
+  text-decoration:none
+}
