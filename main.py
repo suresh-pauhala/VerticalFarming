@@ -1,5 +1,5 @@
 import re
-
+import bcrypt
 from flask import Flask, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import redirect
@@ -11,32 +11,34 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Users(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), nullable=False)
+    userid = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    crop = db.Column(db.String(100), nullable=False)
 
 
-class CropA(db.Model):
+class ProjectA(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    temperature = db.Column(db.String(100), nullable=False)
-    moisture = db.Column(db.String(100), nullable=False)
-    luminance = db.Column(db.String(100), nullable=False)
+    sensorId = db.Column(db.String(100), nullable=False)
+    temperature = db.Column(db.String(100))
+    moisture = db.Column(db.String(100))
+    luminance = db.Column(db.String(100))
 
 
-class CropB(db.Model):
+class ProjectB(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    temperature = db.Column(db.String(100), nullable=False)
-    moisture = db.Column(db.String(100), nullable=False)
-    luminance = db.Column(db.String(100), nullable=False)
+    sensorId = db.Column(db.String(100), nullable=False)
+    temperature = db.Column(db.String(100))
+    moisture = db.Column(db.String(100))
+    luminance = db.Column(db.String(100))
 
 
-class CropC(db.Model):
+class ProjectC(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    temperature = db.Column(db.String(100), nullable=False)
-    moisture = db.Column(db.String(100), nullable=False)
-    luminance = db.Column(db.String(100), nullable=False)
+    sensorId = db.Column(db.String(100), nullable=False)
+    temperature = db.Column(db.String(100))
+    moisture = db.Column(db.String(100))
+    luminance = db.Column(db.String(100))
 
 
 @app.route('/')
@@ -49,7 +51,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/register')
+@app.route('/admin_page')
 def register():
     return render_template('register.html')
 
@@ -57,20 +59,22 @@ def register():
 @app.route('/welcome')
 def welcome():
     if 'user' in session:
-        return render_template('welcome.html')
+        projectA = ProjectA.query.all()
+        projectB = ProjectB.query.all()
+        projectC = ProjectC.query.all()
+        return render_template('welcome.html', projectA=projectA,projectB=projectB,projectC=projectC)
     else:
         return redirect('login')
 
 
 @app.route('/validate_login', methods=['POST'])
 def validate_login():
-    email = request.form.get('email')
+    userid = request.form.get('userid')
     password = request.form.get('password')
-    crop = request.form.get('crops')
 
-    verify = Users.query.filter_by(email=email, password=password, crop=crop).first()
-    if verify:
-        session['user'] = verify.email
+    user = User.query.filter_by(userid=userid).first()
+    if bcrypt.checkpw(password.encode('utf-8'), user.password):
+        session['user'] = user.userid
         return redirect('/welcome')
     else:
         flash("Wrong credentials!!!")
@@ -79,27 +83,27 @@ def validate_login():
 
 @app.route('/validate_register', methods=['POST'])
 def validate_register():
-    email = request.form.get('email')
+    userid = request.form.get('userid')
     password = request.form.get('password')
-    crop = request.form.get('crops')
 
     validations = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,20}$"
     pat = re.compile(validations)
     mat = re.search(pat, password)
 
     if mat:
-        verify = Users.query.filter_by(email=email).first()
+        verify = User.query.filter_by(userid=userid).first()
         if verify:
             flash('User already exist')
-            return redirect('/register')
+            return redirect('/admin_page')
         else:
-            user = Users(email=email, password=password, crop=crop)
+            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            user = User(userid=userid, password=hashed)
             db.session.add(user)
             db.session.commit()
-            return redirect('/')
+            return redirect('/admin_page')
     else:
         flash('Please enter a strong password')
-        return redirect('/register')
+        return redirect('/admin_page')
 
 
 @app.route('/logout')
@@ -110,5 +114,3 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-

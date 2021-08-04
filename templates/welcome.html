@@ -4,50 +4,96 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Title</title>
+    <title>Homepage</title>
 </head>
 <body>
-<h3> Login Successful  </h3>
+
 
 
 <a style="margin-left:90%;" href="/logout">
     <button class="btn btn-primary btn-md">Logout</button>
   <br></a>
+<div>
 <table id="t01">
+<tr>
+    <td>
+        Project A
+    </td>
+</tr>
   <tr>
     <th>id</th>
     <th>temperature</th>
     <th>moisture</th>
       <th>luminance</th>
   </tr>
+
+  {% for row in projectA %}
   <tr>
-    <td>1</td>
-    <td>22</td>
-    <td>30</td>
-      <td>60</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>32</td>
-    <td>18</td>
-      <td>100</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>10</td>
-    <td>30</td>
-      <td>200</td>
-  </tr>
-     <tr>
-    <td>4</td>
-    <td>37</td>
-    <td>26</td>
-      <td>180</td>
-  </tr>
+    <td>{{row.id}}</td>
+    <td>{{row.temperature}}</td>
 
 
+    <td>{{ row.moisture }}</td>
+      <td>{{ row.luminance }}</td>
+
+  </tr>
+    {% endfor %}
+
+</table><br>
+</div>
+<table id="t02">
+<tr>
+    <td>
+        Project B
+    </td>
+</tr>
+  <tr>
+    <th>id</th>
+    <th>temperature</th>
+    <th>moisture</th>
+      <th>luminance</th>
+  </tr>
+
+  {% for row in projectB %}
+  <tr>
+    <td>{{row.id}}</td>
+    <td>{{row.temperature}}</td>
+
+
+    <td>{{ row.moisture }}</td>
+      <td>{{ row.luminance }}</td>
+
+  </tr>
+
+{% endfor %}
 </table>
-<br>
+
+<table id="t03">
+<tr>
+    <td>
+        Project C
+    </td>
+</tr>
+  <tr>
+    <th>id</th>
+    <th>temperature</th>
+    <th>moisture</th>
+      <th>luminance</th>
+  </tr>
+
+  {% for row in projectC %}
+  <tr>
+    <td>{{row.id}}</td>
+    <td>{{row.temperature}}</td>
+
+
+    <td>{{ row.moisture }}</td>
+      <td>{{ row.luminance }}</td>
+
+  </tr>
+
+{% endfor %}
+</table>
 
 </body>
 </html>
