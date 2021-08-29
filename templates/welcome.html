@@ -25,6 +25,12 @@
                    </select>
                       <input type="submit" style="margin:2% 5%; width:10%" class="btn btn-primary btn-md" value="Show Project">
     </form>
+<!--    <div>-->
+<!--    <form class = "form" method="get" action="/connect">-->
+<!--    <label>Click Here to connect to sensor</label><br>-->
+<!--        <input type="submit" style="margin:2% 5%; width:10%" class="btn btn-primary btn-md" value="Connect">-->
+<!--    </form>-->
+<!--    </div>-->
 </div>
 {% if project_data == None %}
 <p style="color:red; margin-left:2%">Not authorized for this project</p>
@@ -35,6 +41,7 @@
   <tr>
     <th>Sensor Id</th>
     <th>Property</th>
+      <th>TimeStamp</th>
       <th>Value</th>
   </tr>
 
@@ -42,6 +49,7 @@
   <tr>
     <td>{{row.sensorId}}</td>
     <td>{{row.property}}</td>
+      <td>{{row.time_stamp}}</td>
       <td>{{row.value}}</td>
   </tr>
    {% endfor %}
@@ -49,88 +57,12 @@
 </table><br>
     {% endif %}
 </div>
-<!--<table id="t02">-->
-<!--<tr>-->
-<!--    <td>-->
-<!--        Project B-->
-<!--    </td>-->
-<!--</tr>-->
-<!--  <tr>-->
-<!--    <th>id</th>-->
-<!--    <th>temperature</th>-->
-<!--    <th>moisture</th>-->
-<!--      <th>luminance</th>-->
-<!--  </tr>-->
 
-<!--  {% for row in projectB %}-->
-<!--  <tr>-->
-<!--    <td>{{row.id}}</td>-->
-<!--    <td>{{row.temperature}}</td>-->
+<script>
 
 
-<!--    <td>{{ row.moisture }}</td>-->
-<!--      <td>{{ row.luminance }}</td>-->
 
-<!--  </tr>-->
-
-<!--{% endfor %}-->
-<!--</table>-->
-
-<!--<table id="t03">-->
-<!--<tr>-->
-<!--    <td>-->
-<!--        Project C-->
-<!--    </td>-->
-<!--</tr>-->
-<!--  <tr>-->
-<!--    <th>id</th>-->
-<!--    <th>temperature</th>-->
-<!--    <th>moisture</th>-->
-<!--      <th>luminance</th>-->
-<!--  </tr>-->
-
-<!--  {% for row in projectC %}-->
-<!--  <tr>-->
-<!--    <td>{{row.id}}</td>-->
-<!--    <td>{{row.temperature}}</td>-->
-
-
-<!--    <td>{{ row.moisture }}</td>-->
-<!--      <td>{{ row.luminance }}</td>-->
-
-<!--  </tr>-->
-
-<!--{% endfor %}-->
-<!--</table>-->
-
-
-<!--<div>-->
-<!--    {% if project_data %}-->
-<!--<table id="data">-->
-<!--  <tr>-->
-<!--    <th>Temperature</th>-->
-<!--    <th>Moisture</th>-->
-<!--      <th>Luminance</th>-->
-<!--  </tr>-->
-
-<!--  {% for row in project_data %}-->
-<!--  <tr>-->
-<!--      {% if row.property == Temperature %}-->
-<!--    <td>{{row.value}}</td>-->
-<!--      {% endif  %}-->
-<!--      {% if row.property == Moisture %}-->
-<!--    <td>{{row.value}}</td>-->
-<!--      {% endif  %}-->
-<!--      {% if row.property == Luminance %}-->
-<!--      <td>{{row.value}}</td>-->
-<!--      {% endif  %}-->
-
-<!--  </tr>-->
-<!--   {% endfor %}-->
-
-<!--</table><br>-->
-<!--    {% endif %}-->
-<!--</div>-->
+</script>
 
 </body>
 </html>

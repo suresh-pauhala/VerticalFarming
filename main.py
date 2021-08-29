@@ -1,11 +1,15 @@
 import re
 import bcrypt
 import jwt
+import time
+import random
 from datetime import datetime, timedelta
 from flask import Flask, jsonify, render_template, request, session, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import redirect
 from functools import wraps
+import paho.mqtt.client as mqtt
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "my_secret"
@@ -16,6 +20,13 @@ db = SQLAlchemy(app)
 token_final = ""
 data = ""
 project_data = ""
+
+Connected = False  # global variable for the state of the connection
+
+broker_address = "127.0.0.1"
+port = 1883
+user = ""
+password = ""
 
 
 class ProjectNew(db.Model):
@@ -36,9 +47,19 @@ class Data(db.Model):
     __tablename__ = 'data'
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-    sensorId = db.Column(db.String(100), nullable=False)
+    sensorId = db.Column(db.String(100), db.ForeignKey('sensor.name'))
     property = db.Column(db.String(100))
+    time_stamp = db.Column(db.DateTime)
     value = db.Column(db.String(100))
+
+
+class Sensor(db.Model):
+    __tablename__ = 'sensor'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    status = db.Column(db.Integer)
+    battery_level_percentage = db.Column(db.Integer)
+    location = db.Column(db.String(100))
 
 
 def token_required(func):
@@ -76,6 +97,7 @@ def admin():
 @app.route('/welcome/<token>')
 def welcome(token):
     if 'user' in session:
+        connect()
         return render_template('welcome.html')
 
     else:
@@ -153,6 +175,84 @@ def show_project():
 def logout():
     session.pop('user')
     return redirect('/login')
+
+
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+
+        print("Connected to broker")
+
+        global Connected
+        Connected = True
+
+    else:
+
+        print("Connection failed")
+
+
+def on_message(client, userdata, message):
+    msg = str(message.payload.decode("utf-8", "ignore"))
+    data_value = int(msg)
+    current_time = datetime.utcnow()
+    print("Message received: " + msg)
+    project_select = random.randrange(1, 4)
+    SensorId_rand = random.randrange(1, 3)
+    sensorId_char_rand = 1
+    project_id = project_select
+
+    if (project_id == 1):
+        sensorId_char_rand = 65
+    elif(project_id == 2):
+        sensorId_char_rand = 66
+    elif (project_id == 3):
+        sensorId_char_rand = 67
+
+    s_Id_char = chr(sensorId_char_rand)
+    if 20 < data_value < 40:
+        sensorId="Temp"
+        sensorId = sensorId+s_Id_char+str(SensorId_rand)
+
+
+        temp = Data(project_id=project_id, sensorId=sensorId, property="Temperature", time_stamp=current_time, value=data_value)
+        db.session.add(temp)
+        db.session.commit()
+    elif 50 < data_value < 100:
+        sensorId = "Moist"
+        sensorId = sensorId + s_Id_char + str(SensorId_rand)
+        moist = Data(project_id=project_id, sensorId=sensorId, property="Moisture", time_stamp=current_time, value=data_value)
+        db.session.add(moist)
+        db.session.commit()
+    elif 200 < data_value < 500:
+        sensorId = "Lum"
+        sensorId = sensorId + s_Id_char + str(SensorId_rand)
+        lum = Data(project_id=project_id, sensorId=sensorId, property="Luminance", time_stamp=current_time, value=data_value)
+        db.session.add(lum)
+        db.session.commit()
+
+
+
+
+
+def connect():
+    broker_address = "127.0.0.1"
+    port = 1883
+    user = "projects"
+    password = "Vfarm@123"
+
+    client = mqtt.Client("VFarm")
+    client.username_pw_set(user, password=password)
+    client.on_connect = on_connect
+    client.on_message = on_message
+
+    client.connect(broker_address, port=port)
+
+    client.loop_start()
+
+    while not Connected:
+        time.sleep(0.1)
+
+    client.subscribe("sensors/testclient")
+    return render_template('welcome.html')
 
 
 if __name__ == '__main__':
