@@ -20,6 +20,9 @@
     <th>Status</th>
       <th>Battery Level (%)</th>
       <th>Location</th>
+      <th>Model</th>
+      <th>Software Version</th>
+
   </tr>
 
   {% for row in sensor_info %}
@@ -28,6 +31,8 @@
     <td>{{row.status}}</td>
       <td>{{row.battery_level_percentage}}</td>
       <td>{{row.location}}</td>
+      <td>{{row.model}}</td>
+      <td>{{row.software_version}}</td>
 
   </tr>
    {% endfor %}
@@ -72,7 +77,7 @@
 </div>
 
 <div>
-  <h6>Configured Threshold Value</h6>
+  <h6>Configured Threshold Value :</h6>
   <table class="data">
   <tr>
     <th>Sensor Id</th>

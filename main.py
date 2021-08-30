@@ -61,6 +61,9 @@ class Sensor(db.Model):
     battery_level_percentage = db.Column(db.Integer)
     location = db.Column(db.String(100))
     threshold = db.Column(db.Integer)
+    model = db.Column(db.String(100))
+    software_version = db.Column(db.String(100))
+
 
 
 def token_required(func):
