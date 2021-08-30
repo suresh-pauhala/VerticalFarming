@@ -216,7 +216,7 @@ def on_message(client, userdata, message):
         sensorId_char_rand = 67
 
     s_Id_char = chr(sensorId_char_rand)
-    if 20 < data_value < 40:
+    if 20 < data_value < 45:
         sensorId="Temp"
         sensorId = sensorId+s_Id_char+str(SensorId_rand)
 
