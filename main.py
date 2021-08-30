@@ -60,6 +60,7 @@ class Sensor(db.Model):
     status = db.Column(db.Integer)
     battery_level_percentage = db.Column(db.Integer)
     location = db.Column(db.String(100))
+    threshold = db.Column(db.Integer)
 
 
 def token_required(func):
@@ -168,8 +169,16 @@ def show_project():
     else:
         project_data = None
 
-    return render_template('welcome.html', project_data=project_data)
+    return render_template('welcome.html', project_data=project_data,project=project)
 
+@app.route('/project_sensors/', methods=['GET'])
+@token_required
+def project_sensors():
+    sensor = request.args.get('sensor')
+
+    sensor_info = Sensor.query.filter_by(name=sensor).all()
+    sensor_data = Data.query.filter_by(sensorId=sensor)
+    return render_template('sensor.html', sensor_info=sensor_info,sensor_data=sensor_data)
 
 @app.route('/logout')
 def logout():
@@ -186,7 +195,6 @@ def on_connect(client, userdata, flags, rc):
         Connected = True
 
     else:
-
         print("Connection failed")
 
 
