@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import redirect
 from functools import wraps
 import paho.mqtt.client as mqtt
-from datetime import datetime
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.secret_key = "my_secret"
@@ -21,7 +21,7 @@ token_final = ""
 data = ""
 project_data = ""
 
-Connected = False  # global variable for the state of the connection
+Connected = False
 
 broker_address = "127.0.0.1"
 port = 1883
@@ -181,7 +181,13 @@ def project_sensors():
 
     sensor_info = Sensor.query.filter_by(name=sensor).all()
     sensor_data = Data.query.filter_by(sensorId=sensor)
-    return render_template('sensor.html', sensor_info=sensor_info,sensor_data=sensor_data)
+    last_day = datetime.utcnow() - timedelta(days=1)
+    print(last_day)
+    last_24_hours_data = Data.query.filter(Data.time_stamp > last_day).filter(Data.time_stamp < datetime.utcnow()).filter(Data.sensorId==sensor).all()
+    labels = [row.time_stamp for row in last_24_hours_data]
+    values = [row.value for row in last_24_hours_data]
+
+    return render_template('sensor.html', sensor_info=sensor_info,sensor_data=sensor_data,labels=labels, values=values, last_24_hours_data=last_24_hours_data)
 
 @app.route('/logout')
 def logout():
