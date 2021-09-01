@@ -24,7 +24,9 @@
                    </select>
                       <input type="submit" style="margin:2% 5%; width:10%" class="btn btn-primary btn-md" value="Show Project">
     </form>
-
+<form class = "form" method="get" action="/device">
+    <input type="submit" style="margin:2% 5%; width:10%" class="btn btn-primary btn-md" value="Manage Devices">
+    </form>
 </div>
 {% if project_data == None %}
 <p style="color:red; margin-left:2%">Not authorized for this project</p>
@@ -70,6 +72,26 @@
                       <option value="LumB2">LumB2</option>
                       {% endif %}
                       {% if project == "3" %}
+                      <option value="TempC1">TempC1</option>
+                      <option value="TempC2">TempC2</option>
+                      <option value="MoistC1">MoistC1</option>
+                      <option value="MoistC2">MoistC2</option>
+                      <option value="LumC1">LumC1</option>
+                      <option value="LumC2">LumC2</option>
+                      {% endif %}
+                      {% if project == "4" %}
+                      <option value="TempA1">TempA1</option>
+                      <option value="TempA2">TempA2</option>
+                      <option value="MoistA1">MoistA1</option>
+                      <option value="MoistA2">MoistA2</option>
+                      <option value="LumA1">LumA1</option>
+                      <option value="LumA2">LumA2</option>
+                      <option value="TempB1">TempB1</option>
+                      <option value="TempB2">TempB2</option>
+                      <option value="MoistB1">MoistB1</option>
+                      <option value="MoistB2">MoistB2</option>
+                      <option value="LumB1">LumB1</option>
+                      <option value="LumB2">LumB2</option>
                       <option value="TempC1">TempC1</option>
                       <option value="TempC2">TempC2</option>
                       <option value="MoistC1">MoistC1</option>

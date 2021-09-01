@@ -98,9 +98,9 @@ def admin():
     return render_template('admin.html')
 
 
-@app.route('/sensor_register')
-def sensor_register():
-    return render_template('sensor_register.html')
+@app.route('/device')
+def device():
+    return render_template('device.html')
 
 
 @app.route('/welcome/<token>')
@@ -160,6 +160,20 @@ def validate_register():
     else:
         flash('Please enter a strong password')
         return redirect('/admin_page')
+
+
+@app.route('/validate_sensor_register', methods=['POST'])
+def validate_sensor_register():
+    name = request.form.get('name')
+    model = request.form.get('model')
+    version = request.form.get('version')
+    threshold = request.form.get('threshold')
+    location = request.form.get('location')
+
+    sensor_register = Sensor(name=name, status="ON", battery_level_percentage=95, model=model, software_version=version, threshold=threshold, location=location)
+    db.session.add(sensor_register)
+    db.session.commit()
+    return redirect('/device')
 
 
 @app.route('/show_project/', methods=['GET'])
