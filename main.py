@@ -98,6 +98,11 @@ def admin():
     return render_template('admin.html')
 
 
+@app.route('/sensor_register')
+def sensor_register():
+    return render_template('sensor_register.html')
+
+
 @app.route('/welcome/<token>')
 def welcome(token):
     if 'user' in session:
