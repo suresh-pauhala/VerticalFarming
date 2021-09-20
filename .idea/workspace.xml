@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73c0bcb4-0995-4dee-a1b0-27014e2f929b" name="Default Changelist" comment="sensor register partially done">
-      <change afterPath="$PROJECT_DIR$/templates/device.html" afterDir="false" />
+    <list default="true" id="73c0bcb4-0995-4dee-a1b0-27014e2f929b" name="Default Changelist" comment="commit device html file">
+      <change afterPath="$PROJECT_DIR$/static/images/back_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/software_update.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frp.py-script.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frp.py.exe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frpc.py-script.py" afterDir="false" />
@@ -11,8 +12,12 @@
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frps.py.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sensor_register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/device.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sensor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sensor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/welcome.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vertical_farming.db" beforeDir="false" afterPath="$PROJECT_DIR$/vertical_farming.db" afterDir="false" />
     </list>
@@ -156,7 +161,21 @@
       <option name="project" value="LOCAL" />
       <updated>1630482653209</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="sensor register done">
+      <created>1630501740839</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630501740839</updated>
+    </task>
+    <task id="LOCAL-00013" summary="commit device html file">
+      <created>1630502397541</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1630502397542</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +202,8 @@
     <MESSAGE value="sensor model info added" />
     <MESSAGE value="View Graph added" />
     <MESSAGE value="sensor register partially done" />
-    <option name="LAST_COMMIT_MESSAGE" value="sensor register partially done" />
+    <MESSAGE value="sensor register done" />
+    <MESSAGE value="commit device html file" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit device html file" />
   </component>
 </project>

@@ -8,6 +8,7 @@
     <title>Login</title>
   </head>
   <body>
+
   <div class=" container_design">
       <div clas="card">
           <div class="card-body">
@@ -18,7 +19,7 @@
                   <label>Password</label><br>
                   <input type="password" class="form-control" name="password"><br>
 
-                  <input type="submit" style="margin-left:32%; width:35%;" class="btn btn-primary btn-md" value="login">
+                  <input type="submit" style="margin-left:32%; width:35%;" class="btn btn-success btn-md" value="login">
                   {% with messages = get_flashed_messages() %}
                    {% if messages %}
                     {% for message in messages %}

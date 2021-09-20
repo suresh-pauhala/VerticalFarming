@@ -21,7 +21,7 @@ token_final = ""
 data = ""
 project_data = ""
 
-Connected = False
+Connected =""
 
 broker_address = "127.0.0.1"
 port = 1883
@@ -100,14 +100,28 @@ def admin():
 
 @app.route('/device')
 def device():
-    return render_template('device.html')
+    if 'user' in session:
+        return render_template('device.html')
+    else:
+        return redirect('login')
+
+
+@app.route('/software_update')
+def software_update():
+    if 'user' in session:
+        user_id = session['user']
+
+        return render_template('software_update.html')
+    else:
+        return redirect('login')
 
 
 @app.route('/welcome/<token>')
 def welcome(token):
     if 'user' in session:
         connect()
-        return render_template('welcome.html')
+        userid = session['user']
+        return render_template('welcome.html',userid=userid)
 
     else:
         return redirect('login')
@@ -197,15 +211,12 @@ def show_project():
 @token_required
 def project_sensors():
     sensor = request.args.get('sensor')
-
     sensor_info = Sensor.query.filter_by(name=sensor).all()
     sensor_data = Data.query.filter_by(sensorId=sensor)
     last_day = datetime.utcnow() - timedelta(days=1)
-    print(last_day)
     last_24_hours_data = Data.query.filter(Data.time_stamp > last_day).filter(Data.time_stamp < datetime.utcnow()).filter(Data.sensorId==sensor).all()
     labels = [row.time_stamp for row in last_24_hours_data]
     values = [row.value for row in last_24_hours_data]
-
     return render_template('sensor.html', sensor_info=sensor_info,sensor_data=sensor_data,labels=labels, values=values, last_24_hours_data=last_24_hours_data)
 
 @app.route('/logout')
@@ -283,9 +294,9 @@ def connect():
     client.connect(broker_address, port=port)
 
     client.loop_start()
-
+    print(Connected)
     while not Connected:
-        time.sleep(0.1)
+        time.sleep(0.8)
 
     client.subscribe("sensors/testclient")
     return render_template('welcome.html')

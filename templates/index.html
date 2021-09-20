@@ -7,14 +7,31 @@
     <title>Home</title>
 </head>
 <body>
-<div class="imgstyle">
-    <div class="btn-position">
-        <a href="/login"><button style="margin:10px; width:38%" class="btn btn-primary btn-md">login</button></a>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CEE6B4;">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-0 mb-sm-0">
+
+      </ul>
+        <ul class="navbar-nav mb-0 mb-sm-0" style="margin-right:8%">
+
+<li class="nav-item">
+          <a class="nav-link" href="/login"><button class="btn btn-outline-success me-2" type="button">Login</button></a>
+        </li>
+              </ul>
     </div>
+  </div>
+</nav>
+
+<div>
+
 
 <img src="{{ url_for('static', filename='images/verticalfarming.jpeg') }}" width="100%" height="655px"/>
 
 </div>
+<script>
 
+</script>
 </body>
 </html>

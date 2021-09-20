@@ -24,17 +24,7 @@ a.button {
     text-align:center;
     background-color:DodgerBlue;
 }
-.imgstyle{
-  position: relative;
-  top:-20px;
-  width:100%;
-}
-.btn-position{
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width:15%
- }
+
 
 
 .data {
