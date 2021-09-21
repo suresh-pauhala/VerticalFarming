@@ -79,12 +79,15 @@
 
   </tr>
 {% endif %}
+            <br>
 </table><br>
 </div>
         <div>
+
+            {% if projectId == 4 %}
         <table class="sensors" style="margin-left:20%; width:78%; margin-top:-42%">
 
-    {% if projectId == 4 %}
+
   <tr>
       <td><a href="/welcome"><button class="btn btn-success">Project A </button></a></td>
             <td><a href="/sensor_detail/TempA1" name="TempA"><button class="btn btn-success"> TempA1 </button></a></td>
@@ -120,16 +123,15 @@
   </tr>
 {% endif %}
 <br>
+            <br>
 </table><br>
 
     </div>
 
-
-
 <div style="margin-top:5%">
 
             {% if sensor_details %}
-<table class="data" style="margin-left:20%; width:78%">
+<table class="data" style="margin-left:20%; width:78%; margin-top:-50%">
   <tr>
     <th>Sensor Id</th>
     <th>Status</th>
