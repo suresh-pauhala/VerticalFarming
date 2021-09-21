@@ -106,12 +106,25 @@ def device():
         return redirect('login')
 
 
-@app.route('/software_update')
-def software_update():
+@app.route('/sensor_detail/<string:sensorId>', methods=['GET','POST'])
+def sensor_detail(sensorId):
+    if 'user' in session:
+        print(sensorId)
+        sensor_details = Sensor.query.filter_by(name=sensorId).all()
+        print(sensor_details)
+        return render_template('device_overview.html', sensor_details=sensor_details)
+    else:
+        return redirect('login')
+
+
+
+@app.route('/device_overview')
+def device_overview():
     if 'user' in session:
         user_id = session['user']
-
-        return render_template('software_update.html')
+        user_detail = User.query.filter_by(userid=user_id).first()
+        projectId = user_detail.project_id
+        return render_template('device_overview.html',projectId=projectId)
     else:
         return redirect('login')
 
@@ -194,7 +207,7 @@ def validate_sensor_register():
 @token_required
 def show_project():
     project = request.args.get('project')
-    print(project)
+    userid = session['user']
     token_project = data['project']
     if int(token_project) == int(project):
         if int(project) == 4:
@@ -205,7 +218,7 @@ def show_project():
     else:
         project_data = None
 
-    return render_template('welcome.html', project_data=project_data,project=project)
+    return render_template('welcome.html', project_data=project_data,project=project, userid=userid)
 
 @app.route('/project_sensors/', methods=['GET'])
 @token_required

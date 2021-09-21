@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73c0bcb4-0995-4dee-a1b0-27014e2f929b" name="Default Changelist" comment="commit device html file">
-      <change afterPath="$PROJECT_DIR$/static/images/back_arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/software_update.html" afterDir="false" />
+    <list default="true" id="73c0bcb4-0995-4dee-a1b0-27014e2f929b" name="Default Changelist" comment="Added back button and show userid on welcome page">
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frp.py-script.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frp.py.exe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Scripts/frpc.py-script.py" afterDir="false" />
@@ -13,12 +11,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/device.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/device.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sensor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sensor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/welcome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/software_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/device_overview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vertical_farming.db" beforeDir="false" afterPath="$PROJECT_DIR$/vertical_farming.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +30,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1vZgJ3yyj1GtCTfn9CagC2MdOfa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -175,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630502397542</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added back button and show userid on welcome page">
+      <created>1632129747910</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1632129747910</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +213,7 @@
     <MESSAGE value="sensor register partially done" />
     <MESSAGE value="sensor register done" />
     <MESSAGE value="commit device html file" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit device html file" />
+    <MESSAGE value="Added back button and show userid on welcome page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added back button and show userid on welcome page" />
   </component>
 </project>

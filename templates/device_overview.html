@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Device Management</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#CEE6B4;">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" onclick="goBack()"><img src="../static/images/back_arrow.png" height="35px" width="35px"> </img></a>
+        </li>
+      </ul>
+        <ul class="navbar-nav mb-0 mb-sm-0" style="margin-right:8%">
+<li class="nav-item">
+          <a class="nav-link" href="/logout"><button class="btn btn-outline-success me-2" type="button">Logout</button></a>
+        </li>
+              </ul>
+    </div>
+  </div>
+</nav>
+<hr style="width:18%; margin-top:1px; margin-bottom:0px ">
+<div style="margin-right:82%">
+<nav style="height:600px; background-color:#CEE6B4;"  class="nav flex-column navbar-dark">
+  <li class="nav-item" >
+    <a class="nav-link active"  aria-current="page" href="/device" style="color:black" >Onboard</a>
+  </li><hr>
+  <li class="nav-item">
+    <a class="nav-link" href="/device_overview" onclick="showThings()" >Device Overview</a>
+  </li>
+<hr>
+
+</nav>
+
+    </div>
+    <div>
+        <table class="sensors" style="margin-left:20%; width:78%; margin-top:-42%">
+
+    {% if projectId == 1 %}
+  <tr>
+      <td><a href="/welcome"><button class="btn btn-success">Project A </button></a></td>
+            <td><a href="/sensor_detail/TempA1" name="TempA"><button class="btn btn-success"> TempA1 </button></a></td>
+            <td><a href="/sensor_detail/TempA2"><button class="btn btn-success"> TempA2 </button></a></td>
+            <td><a href="/sensor_detail/MoistA1"><button class="btn btn-success"> MoistA1 </button></a></td>
+            <td><a href="/sensor_detail/MoistA2"><button class="btn btn-success"> MoistA2 </button></a></td>
+            <td><a href="/sensor_detail/LumA1"><button class="btn btn-success"> LumA1 </button></a></td>
+            <td><a href="/sensor_detail/LumA2"><button class="btn btn-success"> LumA2 </button></a></td>
+
+
+  </tr>
+{% endif %}
+            {% if projectId == 2 %}
+              <tr>
+    <td><a href="/welcome"><button class="btn btn-success">Project B </button></a></td>
+            <td><a href="/sensor_detail/TempB1" ><button class="btn btn-success"> TempB1 </button></a></td>
+            <td><a href="/sensor_detail/TempB2"><button class="btn btn-success"> TempB2 </button></a></td>
+            <td><a href="/sensor_detail/MoistB1"><button class="btn btn-success"> MoistB1 </button></a></td>
+            <td><a href="/sensor_detail/MoistB2"><button class="btn btn-success"> MoistB2 </button></a></td>
+            <td><a href="/sensor_detail/LumB1"><button class="btn btn-success"> LumB1 </button></a></td>
+            <td><a href="/sensor_detail/LumB2"><button class="btn btn-success"> LumB2 </button></a></td>
+
+  </tr>
+  {% endif %}
+            {% if projectId == 3 %}
+              <tr>
+    <td><a href="/welcome"><button class="btn btn-success">Project C </button></a></td>
+            <td><a href="/sensor_detail/TempC1" name="TempA"><button class="btn btn-success"> TempC1 </button></a></td>
+            <td><a href="/sensor_detail/TempC2"><button class="btn btn-success"> TempC2 </button></a></td>
+            <td><a href="/sensor_detail/MoistC1"><button class="btn btn-success"> MoistC1 </button></a></td>
+            <td><a href="/sensor_detail/MoistC2"><button class="btn btn-success"> MoistC2 </button></a></td>
+            <td><a href="/sensor_detail/LumC1"><button class="btn btn-success"> LumC1 </button></a></td>
+            <td><a href="/sensor_detail/LumC2"><button class="btn btn-success"> LumC2 </button></a></td>
+
+  </tr>
+{% endif %}
+</table><br>
+</div>
+        <div>
+        <table class="sensors" style="margin-left:20%; width:78%; margin-top:-42%">
+
+    {% if projectId == 4 %}
+  <tr>
+      <td><a href="/welcome"><button class="btn btn-success">Project A </button></a></td>
+            <td><a href="/sensor_detail/TempA1" name="TempA"><button class="btn btn-success"> TempA1 </button></a></td>
+            <td><a href="/sensor_detail/TempA2"><button class="btn btn-success"> TempA2 </button></a></td>
+            <td><a href="/sensor_detail/MoistA1"><button class="btn btn-success"> MoistA1 </button></a></td>
+            <td><a href="/sensor_detail/MoistA2"><button class="btn btn-success"> MoistA2 </button></a></td>
+            <td><a href="/sensor_detail/LumA1"><button class="btn btn-success"> LumA1 </button></a></td>
+            <td><a href="/sensor_detail/LumA2"><button class="btn btn-success"> LumA2 </button></a></td>
+
+
+  </tr>
+
+              <tr>
+    <td><a href="/welcome"><button class="btn btn-success">Project B </button></a></td>
+            <td><a href="/sensor_detail/TempB1" ><button class="btn btn-success"> TempB1 </button></a></td>
+            <td><a href="/sensor_detail/TempB2"><button class="btn btn-success"> TempB2 </button></a></td>
+            <td><a href="/sensor_detail/MoistB1"><button class="btn btn-success"> MoistB1 </button></a></td>
+            <td><a href="/sensor_detail/MoistB2"><button class="btn btn-success"> MoistB2 </button></a></td>
+            <td><a href="/sensor_detail/LumB1"><button class="btn btn-success"> LumB1 </button></a></td>
+            <td><a href="/sensor_detail/LumB2"><button class="btn btn-success"> LumB2 </button></a></td>
+
+  </tr>
+
+              <tr>
+    <td><a href="/welcome"><button class="btn btn-success">Project C </button></a></td>
+            <td><a href="/sensor_detail/TempC1" name="TempA"><button class="btn btn-success"> TempC1 </button></a></td>
+            <td><a href="/sensor_detail/TempC2"><button class="btn btn-success"> TempC2 </button></a></td>
+            <td><a href="/sensor_detail/MoistC1"><button class="btn btn-success"> MoistC1 </button></a></td>
+            <td><a href="/sensor_detail/MoistC2"><button class="btn btn-success"> MoistC2 </button></a></td>
+            <td><a href="/sensor_detail/LumC1"><button class="btn btn-success"> LumC1 </button></a></td>
+            <td><a href="/sensor_detail/LumC2"><button class="btn btn-success"> LumC2 </button></a></td>
+
+  </tr>
+{% endif %}
+<br>
+</table><br>
+
+    </div>
+
+
+
+<div style="margin-top:5%">
+
+            {% if sensor_details %}
+<table class="data" style="margin-left:20%; width:78%">
+  <tr>
+    <th>Sensor Id</th>
+    <th>Status</th>
+      <th>Battery Level (%)</th>
+      <th>Location</th>
+      <th>Model</th>
+      <th>Software Version</th>
+
+  </tr>
+
+  {% for row in sensor_details %}
+  <tr>
+    <td>{{row.name}}</td>
+    <td>{{row.status}}</td>
+      <td>{{row.battery_level_percentage}}</td>
+      <td>{{row.location}}</td>
+      <td>{{row.model}}</td>
+      <td>{{row.software_version}}</td>
+
+  </tr>
+   {% endfor %}
+</table>
+    <br>
+    {% endif %}
+
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
